@@ -20,7 +20,7 @@ app.get('/new/:url(*)', function(req, res) {
     
     var urlObj = {};
     
-    if (validator.isURL(url)) {
+    if (validator.isURL(url, { require_protocol: true })) {
         
         urlObj = {
             original_url: url,
@@ -50,7 +50,7 @@ app.get('/:url', function(req, res) {
         urlFind = searchForUrl(url_id);
         if (urlFind.length === 1) {
             urlObj = urlFind[0];
-            res.send(urlObj.original_url);
+            res.redirect(urlObj.original_url);
         } else {
             res.send('URL not found.');
         }
