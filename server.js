@@ -1,12 +1,19 @@
 var express = require('express');
 var validator = require('validator');
+var path = require('path');
 
 var app = express();
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 var port = process.env.PORT || 8080;
 
 var urls = []; //use this array instead of MongoDB for now.
 
+
+app.get('/', function(req, res) {
+    res.render('index', { app_url: process.env.APP_URL });
+});
 
 app.get('/new/:url(*)', function(req, res) {
     var url = req.params.url;

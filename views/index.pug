@@ -1,0 +1,20 @@
+html
+  head
+    title URL Shortener Microservice
+  body
+    h3 Example usage:
+    code #{app_url}new/https://www.google.com
+    br
+    code #{app_url}new/http://foo.com:80
+    h3 Example output:
+    code {
+    br
+    code "original_url":"http://foo.com:80",
+    br
+    code "short_url":"#{app_url}8170"
+    br
+    code }
+    h3 For example:
+    code #{app_url}2871
+    h3 will redirect to
+    code https://www.google.com/
