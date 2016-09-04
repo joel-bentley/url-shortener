@@ -38,7 +38,6 @@ app.get('/new/:url(*)', function(req, res) {
     }
 });
 
-
 app.get('/:url', function(req, res) {
     
     var url_id = req.params.url;
@@ -60,6 +59,9 @@ app.get('/:url', function(req, res) {
     }
 });
 
+app.get('/:url*', function(req, res) {
+   res.send('Invalid Input'); 
+});
 
 app.listen(port, function() {
     console.log('Listening on port ' + port);
