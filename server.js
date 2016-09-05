@@ -9,7 +9,7 @@ app.set('view engine', 'pug');
 var port = process.env.PORT || 8080;
 
 var MongoClient = require('mongodb').MongoClient;
-var mongoUrl = 'mongodb://localhost:27017/url-shortener';
+var mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/url-shortener';
 
 var urlsCollection;
 
