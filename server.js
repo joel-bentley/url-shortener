@@ -1,6 +1,5 @@
 var express = require('express');
 var validator = require('validator');
-var path = require('path');
 
 var app = express();
 app.set('views', './views');
