@@ -6,6 +6,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 var port = process.env.PORT || 8080;
+var app_url = process.env.APP_URL || '[APP URL]';
 
 var MongoClient = require('mongodb').MongoClient;
 var mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/url-shortener';
@@ -24,7 +25,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 
 
 app.get('/', function(req, res) {
-    res.render('index', { app_url: process.env.APP_URL });
+    res.render('index', { app_url });
 });
 
 app.get('/new/:url(*)', function(req, res) {
@@ -42,7 +43,7 @@ app.get('/new/:url(*)', function(req, res) {
         urlsCollection.insertOne(urlObj, function(err, result) {
             if (err) throw err; 
             
-            res.send({
+            res.json({
                 original_url: urlObj.original_url,
                 short_url: process.env.APP_URL + urlObj.url_id
             });
